@@ -23,6 +23,7 @@ public class Liquid {
     private Type type;
     private Long rate;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "liquid")
+    @Column(name = "comments")
     private Set<CommentSection> comments = new HashSet<>();
 
 }

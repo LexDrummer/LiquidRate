@@ -1,11 +1,13 @@
 package ru.lexdrummer.liquidrate.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class CommentSection {
@@ -13,11 +15,11 @@ public class CommentSection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "liquid_id")
-    private Liquid target;
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "liquid_id")
+    private Liquid liquid;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User author;
     private String comment;
     private Integer liquidVolume;
