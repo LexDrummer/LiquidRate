@@ -1,17 +1,28 @@
 package ru.lexdrummer.liquidrate.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@Entity
 public class Liquid {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
     private Type type;
     private Long rate;
-    private List<CommentSection> comments;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "liquid")
+    private Set<CommentSection> comments = new HashSet<>();
 
 }
