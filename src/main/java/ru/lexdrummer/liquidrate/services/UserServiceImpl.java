@@ -2,6 +2,7 @@ package ru.lexdrummer.liquidrate.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.lexdrummer.liquidrate.model.User;
 import ru.lexdrummer.liquidrate.repositories.UserRepository;
 
 @Slf4j
@@ -12,5 +13,12 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public User findByNickname(String nickname) {
+        if(userRepository.findAll().iterator().next().getNickname().equals(nickname))
+        return userRepository.findAll().iterator().next();
+        else return null;
     }
 }

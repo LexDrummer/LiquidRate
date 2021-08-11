@@ -1,4 +1,10 @@
 package ru.lexdrummer.liquidrate.services;
 
+import ru.lexdrummer.liquidrate.model.CommentSection;
+
+import java.util.Set;
+
 public interface CommentSectionService {
+
+    Set<CommentSection> findAllByLiquidName(String name);
 }

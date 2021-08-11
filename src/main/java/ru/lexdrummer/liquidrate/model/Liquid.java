@@ -4,7 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -21,9 +23,14 @@ public class Liquid {
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
     private Type type;
+    private Integer volume;
+    @ElementCollection
+    private List<Long> rates = new ArrayList<>();
     private Long rate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "liquid")
-    @Column(name = "comments")
-    private Set<CommentSection> comments = new HashSet<>();
+    @ElementCollection(targetClass = Tastes.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "tastes")
+    @Column(name = "tastes")
+    private Set<Tastes> tastes = new HashSet<>();
 
 }

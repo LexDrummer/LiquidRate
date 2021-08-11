@@ -1,5 +1,7 @@
 package ru.lexdrummer.liquidrate.model;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,6 +24,17 @@ public class User {
     private String lastName;
     private String city;
     private LocalDate birthdate;
-    @OneToMany
-    private Set<CommentSection> comments = new HashSet<>();
+
+
+    @Builder(access = AccessLevel.PUBLIC)
+
+    public User(String nickname, String email, String firstName, String lastName, String city, LocalDate birthdate) {
+        this.nickname = nickname;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.city = city;
+        this.birthdate = birthdate;
+    }
+
 }
