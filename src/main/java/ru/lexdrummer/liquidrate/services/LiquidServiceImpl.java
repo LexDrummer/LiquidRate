@@ -25,17 +25,17 @@ public class LiquidServiceImpl implements LiquidService {
     }
 
     @Override
-    public Set<Liquid> findByManufacturer(String manufacturer) {
-        return liquidRepository.findByManufacturer(manufacturer);
+    public Set<Liquid> findAllByManufacturersName(String manufacturer) {
+        Set<Liquid> liquids = new HashSet<>();
+        liquidRepository.findAll().forEach(liquid -> {
+                if (liquid.getManufacturer().getName().equals(manufacturer)) liquids.add(liquid);}
+        );
+        return liquids;
     }
 
     @Override
     public Set<Liquid> findByRate(Long min, Long max) {
         Set<Liquid> liquids = new HashSet<>();
-        liquidRepository.findAll().forEach(liquidItr -> {
-            if(liquidItr.getRate() > min && liquidItr.getRate() < max)
-                liquids.add(liquidItr);
-        });
         return liquids;
     }
 
@@ -44,12 +44,4 @@ public class LiquidServiceImpl implements LiquidService {
         return liquidRepository.findByName(name);
     }
 
-    @Override
-    public Long getRateByLiquidName(String name) {
-        Set<CommentSection> comments = commentSectionRepository.findByLiquidName(name);
-        List<Long> rates = new ArrayList<>();
-                comments.forEach(comment -> rates.add(comment.getRate()));
-                Long rate = rates.stream().reduce(Long::sum).get()/rates.size();
-        return rate;
-    }
 }

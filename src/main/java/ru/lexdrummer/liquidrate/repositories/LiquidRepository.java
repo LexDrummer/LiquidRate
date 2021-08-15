@@ -9,6 +9,4 @@ public interface LiquidRepository extends CrudRepository<Liquid, Long> {
 
     Liquid findByName(String name);
 
-    Set<Liquid>findByManufacturer(String manufacturer);
-
 }

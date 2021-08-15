@@ -5,4 +5,6 @@ import ru.lexdrummer.liquidrate.model.Manufacturer;
 
 public interface ManufacturerRepository extends CrudRepository<Manufacturer, Long> {
 
+    Manufacturer findByName(String name);
+
 }

@@ -6,13 +6,10 @@ import java.util.Set;
 
 public interface LiquidService {
 
-    Set<Liquid> findByManufacturer(String manufacturer);
+    Set<Liquid> findAllByManufacturersName(String manufacturer);
 
     Set<Liquid> findByRate(Long min, Long max);
 
     Liquid findByName(String name);
-
-    Long getRateByLiquidName(String name);
-
 
 }

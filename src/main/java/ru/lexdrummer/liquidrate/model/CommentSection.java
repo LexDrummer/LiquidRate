@@ -31,7 +31,8 @@ public class CommentSection {
 
     @Builder
 
-    public CommentSection(Liquid liquid, User author, String comment, @Nullable Integer liquidVolume, Integer nicotine, Long rate) {
+    public CommentSection(Liquid liquid, User author, String comment,
+                          @Nullable Integer liquidVolume, Integer nicotine, Long rate) {
         this.liquid = liquid;
         this.author = author;
         this.comment = comment;

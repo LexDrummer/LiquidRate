@@ -1,5 +1,6 @@
 package ru.lexdrummer.liquidrate.model;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,13 +25,23 @@ public class Liquid {
     private Manufacturer manufacturer;
     private Type type;
     private Integer volume;
-    @ElementCollection
-    private List<Long> rates = new ArrayList<>();
     private Long rate;
     @ElementCollection(targetClass = Tastes.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "tastes")
     @Column(name = "tastes")
     private Set<Tastes> tastes = new HashSet<>();
+    private String description;
 
+    @Builder
+    public Liquid(String name, Manufacturer manufacturer, Type type, Integer volume,
+                  Long rate, Set<Tastes> tastes, String description) {
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.type = type;
+        this.volume = volume;
+        this.rate = rate;
+        this.tastes = tastes;
+        this.description = description;
+    }
 }

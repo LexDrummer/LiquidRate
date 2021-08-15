@@ -6,6 +6,8 @@
 </head>
 <body>
 Hello
-<div th:text="${liquid}"></div>
+<div th:each="liquid : ${liquids}">
+    <a th:text="${liquid.getName()}"></a>
+</div>
 </body>
 </html>

@@ -7,7 +7,7 @@ import java.util.Set;
 
 public interface ManufacturerService {
 
-    Manufacturer findByName();
+    Manufacturer findByName(String name);
 
     Set<Liquid> findProducts();
 

@@ -11,8 +11,10 @@ import ru.lexdrummer.liquidrate.repositories.ManufacturerRepository;
 import ru.lexdrummer.liquidrate.repositories.UserRepository;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -22,7 +24,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private final UserRepository userRepository;
     private final CommentSectionRepository commentSectionRepository;
 
-    public DataLoader(LiquidRepository liquidRepository, ManufacturerRepository manufacturerRepository, UserRepository userRepository, CommentSectionRepository commentSectionRepository) {
+    public DataLoader(LiquidRepository liquidRepository, ManufacturerRepository manufacturerRepository,
+                      UserRepository userRepository, CommentSectionRepository commentSectionRepository) {
         this.liquidRepository = liquidRepository;
         this.manufacturerRepository = manufacturerRepository;
         this.userRepository = userRepository;
@@ -39,18 +42,23 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             shoria.setName("shoria");
             shoria.setManufacturer(maxwells);
             shoria.setType(Type.CLASSIC);
-            shoria.setRates(new ArrayList<>());
-            shoria.setTastes(new HashSet<>());
+            Set<Tastes> shoriaTastes = new HashSet<>();
+            shoriaTastes.add(Tastes.NEEDLES);
+            shoriaTastes.add(Tastes.ICE);
+            shoriaTastes.add(Tastes.BERRIES);
+            shoria.setTastes(shoriaTastes);
             shoria.setVolume(120);
+            Set<Tastes> richTastes = new HashSet<>(Arrays.asList(Tastes.ICE, Tastes.BERRIES));
+            Liquid rich = Liquid.builder().name("Rich").manufacturer(maxwells).tastes(richTastes)
+                    .description("Mix of watermelon, melon and strawberry with ice").type(Type.CLASSIC)
+                    .volume(120).rate(4L).build();
             User alex = User.builder().nickname("lexdrummer").firstName("Alex").lastName("Rubin").
                     city("Koenig").birthdate(LocalDate.of(1991,4,14)).email("alexandr@mail.ru").build();
             CommentSection alexComment = CommentSection.builder().author(alex).comment("Top of the top.").liquid(shoria)
                     .liquidVolume(120).nicotine(3).rate(5L).build();
             CommentSection alexComment1 = CommentSection.builder().author(alex).comment("Probably bad batch").liquid(shoria)
                     .liquidVolume(120).nicotine(3).rate(3L).build();
-            shoria.getRates().add(alexComment.getRate());
-            alexComment1.getLiquid().getRates().add(alexComment1.getRate());
-            liquidRepository.save(shoria);
+            liquidRepository.saveAll(Arrays.asList(shoria, rich));
             manufacturerRepository.save(maxwells);
             userRepository.save(alex);
             commentSectionRepository.save(alexComment);
