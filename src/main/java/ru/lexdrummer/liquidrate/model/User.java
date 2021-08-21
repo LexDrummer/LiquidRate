@@ -7,16 +7,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
 @Data
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nickname;
     private String email;
@@ -24,17 +24,21 @@ public class User {
     private String lastName;
     private String city;
     private LocalDate birthdate;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<CommentSection> comments;
 
 
     @Builder(access = AccessLevel.PUBLIC)
 
-    public User(String nickname, String email, String firstName, String lastName, String city, LocalDate birthdate) {
+    public User(String nickname, String email, String firstName, String lastName,
+                String city, LocalDate birthdate, Set<CommentSection> comments) {
         this.nickname = nickname;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.birthdate = birthdate;
+        this.comments = comments;
     }
 
 }

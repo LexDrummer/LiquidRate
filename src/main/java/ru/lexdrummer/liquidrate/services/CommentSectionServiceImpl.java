@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.lexdrummer.liquidrate.model.CommentSection;
 import ru.lexdrummer.liquidrate.repositories.CommentSectionRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Slf4j
@@ -19,6 +21,13 @@ public class CommentSectionServiceImpl implements CommentSectionService {
 
     @Override
     public Set<CommentSection> findAllByLiquidName(String name) {
-        return commentSectionRepository.findByLiquidName(name);
+        return commentSectionRepository.findAllByLiquidName(name);
+    }
+
+    public Double findRateByLiquidName(String name) {
+        List<Double> rates = new ArrayList<>();
+        commentSectionRepository.findAllByLiquidName(name).forEach(i -> rates.add(i.getRate()));
+        double rate = (rates.stream().mapToDouble(i -> i).sum()) / rates.size();
+        return rate;
     }
 }

@@ -7,5 +7,6 @@ import java.util.Set;
 
 public interface CommentSectionRepository extends CrudRepository<CommentSection, Long> {
 
-    Set<CommentSection> findByLiquidName(String name);
+    Set<CommentSection> findAllByLiquidName(String name);
+
 }

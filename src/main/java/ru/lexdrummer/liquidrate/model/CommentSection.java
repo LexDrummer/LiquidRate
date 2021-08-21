@@ -15,26 +15,26 @@ import javax.persistence.*;
 public class CommentSection {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "liquid_id")
     private Liquid liquid;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User author;
+    private User user;
     private String comment;
     @Nullable
     private Integer liquidVolume;
     private Integer nicotine;
-    private Long rate;
+    private Double rate;
 
     @Builder
 
-    public CommentSection(Liquid liquid, User author, String comment,
-                          @Nullable Integer liquidVolume, Integer nicotine, Long rate) {
+    public CommentSection(Liquid liquid, User user, String comment,
+                          @Nullable Integer liquidVolume, Integer nicotine, Double rate) {
         this.liquid = liquid;
-        this.author = author;
+        this.user = user;
         this.comment = comment;
         this.liquidVolume = liquidVolume;
         this.nicotine = nicotine;

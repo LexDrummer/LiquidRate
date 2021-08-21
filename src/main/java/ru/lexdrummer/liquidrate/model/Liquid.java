@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -16,7 +14,7 @@ import java.util.Set;
 public class Liquid {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "name")
     private String name;
@@ -25,7 +23,7 @@ public class Liquid {
     private Manufacturer manufacturer;
     private Type type;
     private Integer volume;
-    private Long rate;
+    private Double rate;
     @ElementCollection(targetClass = Tastes.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "tastes")
@@ -35,7 +33,7 @@ public class Liquid {
 
     @Builder
     public Liquid(String name, Manufacturer manufacturer, Type type, Integer volume,
-                  Long rate, Set<Tastes> tastes, String description) {
+                  Double rate, Set<Tastes> tastes, String description) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.type = type;

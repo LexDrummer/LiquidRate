@@ -2,14 +2,11 @@ package ru.lexdrummer.liquidrate.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.lexdrummer.liquidrate.model.CommentSection;
 import ru.lexdrummer.liquidrate.model.Liquid;
 import ru.lexdrummer.liquidrate.repositories.CommentSectionRepository;
 import ru.lexdrummer.liquidrate.repositories.LiquidRepository;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Slf4j

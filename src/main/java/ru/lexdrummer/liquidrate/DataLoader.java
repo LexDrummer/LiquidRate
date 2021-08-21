@@ -12,7 +12,6 @@ import ru.lexdrummer.liquidrate.repositories.UserRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,7 +34,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         @Override
         @Transactional
         public void onApplicationEvent (ContextRefreshedEvent contextRefreshedEvent){
-            Manufacturer maxwells = new Manufacturer();
+        /*
+        Manufacturer maxwells = new Manufacturer();
             maxwells.setCountry("Russia");
             maxwells.setName("Maxwells");
             Liquid shoria = new Liquid();
@@ -51,20 +51,21 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             Set<Tastes> richTastes = new HashSet<>(Arrays.asList(Tastes.ICE, Tastes.BERRIES));
             Liquid rich = Liquid.builder().name("Rich").manufacturer(maxwells).tastes(richTastes)
                     .description("Mix of watermelon, melon and strawberry with ice").type(Type.CLASSIC)
-                    .volume(120).rate(4L).build();
+                    .volume(120).rate(4.0).build();
             User alex = User.builder().nickname("lexdrummer").firstName("Alex").lastName("Rubin").
                     city("Koenig").birthdate(LocalDate.of(1991,4,14)).email("alexandr@mail.ru").build();
             CommentSection alexComment = CommentSection.builder().author(alex).comment("Top of the top.").liquid(shoria)
-                    .liquidVolume(120).nicotine(3).rate(5L).build();
+                    .liquidVolume(120).nicotine(3).rate(5.0).build();
             CommentSection alexComment1 = CommentSection.builder().author(alex).comment("Probably bad batch").liquid(shoria)
-                    .liquidVolume(120).nicotine(3).rate(3L).build();
-            liquidRepository.saveAll(Arrays.asList(shoria, rich));
+                    .liquidVolume(120).nicotine(3).rate(3.0).build();
+            liquidRepository.save(shoria);
+            liquidRepository.save(rich);
             manufacturerRepository.save(maxwells);
             userRepository.save(alex);
             commentSectionRepository.save(alexComment);
             commentSectionRepository.save(alexComment1);
 
-
+*/
 
         }
     }
