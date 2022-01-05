@@ -28,12 +28,16 @@
     <tbody>
     <tr th:each="liquid : ${liquids}">
         <th scope="row" th:text="${liquid.getId()}">ID</th>
-        <td th:text="${liquid.getName()}">Name</td>
+        <td>
+          <a th:href="@{/liquids/{liquidId}(liquidId=${liquid.getId()}, liquidName=${liquid.getName()})}" th:text="${liquid.getName()}">
+              Name
+          </a>
+        </td>
         <td th:text="${liquid.getManufacturer().getName()}">Manufacturer</td>
         <td th:text="${liquid.getManufacturer().getCountry()}">Country</td>
-        <td <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-        </a>
+        <td class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tastes
+        </td>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown" th:each="taste : ${liquid.getTastes()}">
         <li><a class="dropdown-item" href="#" th:text="${taste.name()}">Action</a></li>
         </ul>

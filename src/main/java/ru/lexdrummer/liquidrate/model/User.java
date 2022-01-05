@@ -24,8 +24,6 @@ public class User {
     private String lastName;
     private String city;
     private LocalDate birthdate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<CommentSection> comments;
 
 
     @Builder(access = AccessLevel.PUBLIC)
@@ -38,7 +36,6 @@ public class User {
         this.lastName = lastName;
         this.city = city;
         this.birthdate = birthdate;
-        this.comments = comments;
     }
 
 }

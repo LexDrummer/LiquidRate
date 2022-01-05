@@ -34,7 +34,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         @Override
         @Transactional
         public void onApplicationEvent (ContextRefreshedEvent contextRefreshedEvent){
-        /*
+       // /*
         Manufacturer maxwells = new Manufacturer();
             maxwells.setCountry("Russia");
             maxwells.setName("Maxwells");
@@ -54,9 +54,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                     .volume(120).rate(4.0).build();
             User alex = User.builder().nickname("lexdrummer").firstName("Alex").lastName("Rubin").
                     city("Koenig").birthdate(LocalDate.of(1991,4,14)).email("alexandr@mail.ru").build();
-            CommentSection alexComment = CommentSection.builder().author(alex).comment("Top of the top.").liquid(shoria)
+            CommentSection alexComment = CommentSection.builder().user(alex).comment("Top of the top.").liquid(shoria)
                     .liquidVolume(120).nicotine(3).rate(5.0).build();
-            CommentSection alexComment1 = CommentSection.builder().author(alex).comment("Probably bad batch").liquid(shoria)
+            CommentSection alexComment1 = CommentSection.builder().user(alex).comment("Probably bad batch").liquid(shoria)
                     .liquidVolume(120).nicotine(3).rate(3.0).build();
             liquidRepository.save(shoria);
             liquidRepository.save(rich);
@@ -65,7 +65,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             commentSectionRepository.save(alexComment);
             commentSectionRepository.save(alexComment1);
 
-*/
+            //*/
 
         }
     }
