@@ -8,21 +8,21 @@ import ru.lexdrummer.liquidrate.services.CommentSectionService;
 import ru.lexdrummer.liquidrate.services.LiquidService;
 
 @Controller
-public class IndexController {
+public class LiquidsController {
 
     private final LiquidService liquidService;
     private final CommentSectionService commentSectionService;
 
-    public IndexController(LiquidService liquidService, CommentSectionService commentSectionService) {
+    public LiquidsController(LiquidService liquidService, CommentSectionService commentSectionService) {
         this.liquidService = liquidService;
         this.commentSectionService = commentSectionService;
     }
 
-    @RequestMapping({"", "/", "/index", "/index.html"})
-    public String index(Model model){
+    @RequestMapping({"/liquids", "/liquids.html"})
+    public String liquids(Model model){
 
         model.addAttribute("liquids", liquidService.findAllByManufacturersName("Maxwells"));
-        return "index";
+        return "liquids";
     }
 
 }

@@ -39,7 +39,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             maxwells.setCountry("Russia");
             maxwells.setName("Maxwells");
             Liquid shoria = new Liquid();
-            shoria.setName("shoria");
+            shoria.setName("Shoria");
             shoria.setManufacturer(maxwells);
             shoria.setType(Type.CLASSIC);
             Set<Tastes> shoriaTastes = new HashSet<>();
