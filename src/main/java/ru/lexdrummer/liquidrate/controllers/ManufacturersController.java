@@ -7,7 +7,7 @@ import ru.lexdrummer.liquidrate.services.ManufacturerService;
 
 @Controller
 public class ManufacturersController {
-    private ManufacturerService manufacturerService;
+    private final ManufacturerService manufacturerService;
 
     public ManufacturersController(ManufacturerService manufacturerService) {
         this.manufacturerService = manufacturerService;

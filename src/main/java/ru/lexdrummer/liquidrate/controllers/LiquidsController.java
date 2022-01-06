@@ -3,7 +3,7 @@ package ru.lexdrummer.liquidrate.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.lexdrummer.liquidrate.services.CommentSectionService;
 import ru.lexdrummer.liquidrate.services.LiquidService;
 
@@ -18,10 +18,17 @@ public class LiquidsController {
         this.commentSectionService = commentSectionService;
     }
 
-    @RequestMapping({"/liquids", "/liquids.html"})
+    @GetMapping({"/liquids", "/liquids.html"})
     public String liquids(Model model){
         model.addAttribute("liquids", liquidService.findAll());
         return "liquids";
+    }
+
+    @PostMapping("/deleteLiquid/{id}")
+    public String deleteLiquid(@PathVariable Long id){
+        commentSectionService.deleteAllByLiquidId(id);
+        liquidService.deleteLiquid(id);
+        return "redirect:/liquids";
     }
 
 }

@@ -20,7 +20,10 @@
             <a th:href="@{/liquids/{id} (id=${liquid.getId()})}"
                th:text="${liquid.getName()}">Liquid Name</a>
         </h2>
-        <h3 class="text-muted" th:text="${liquid.getManufacturer().getName()}">Liquid Manufacturer</h3>
+        <h3 class="text-muted">
+            <a th:href="@{/manufacturers/{id} (id=${liquid.getManufacturer().getId()})}"
+               th:text="${liquid.getManufacturer().getName()}">Liquid Manufacturer</a>
+        </h3>
         <p class="lead" th:text="${liquid.getDescription()}">Description</p>
         <br>
         <a th:text="${liquid.getManufacturer().getCountry()}"/>
@@ -30,8 +33,9 @@
             <td th:text="${taste.name()}"></td>
         </tr>
         </table>
-        <span>RATE: </span>
-        <a th:text="${liquid.getRate()}"/>
+        <form th:action="@{/deleteLiquid/{id}(id=${liquid.getId()})}" th:object="${liquid}" method="post">
+            <button class="btn btn-outline-warning" type="submit" th:text="Delete"/>
+        </form>
     </div>
     <div class="col-md-5 order-md-1">
         <img src="/images/shoria2.jpeg">

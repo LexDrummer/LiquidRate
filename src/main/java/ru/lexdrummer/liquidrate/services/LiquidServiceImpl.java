@@ -51,4 +51,8 @@ public class LiquidServiceImpl implements LiquidService {
         return liquids;
     }
 
+    public void deleteLiquid(Long id){
+        liquidRepository.deleteById(id);
+    }
+
 }

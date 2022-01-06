@@ -11,6 +11,10 @@ public interface ManufacturerService {
 
     Manufacturer findByName(String name);
 
+    Manufacturer findById(Long id);
+
+    Set<Manufacturer> findByCountry(String country);
+
     Set<Liquid> findProducts();
 
 

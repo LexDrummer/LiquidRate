@@ -24,6 +24,7 @@ public class LiquidController {
     public String liquidPage(Model model, @PathVariable("id") Long id){
         model.addAttribute("liquid", liquidService.findById(id));
         model.addAttribute("comments", commentSectionService.findAllByLiquidId(id));
+        model.addAttribute("rate", commentSectionService.findRateByLiquidId(id));
 
         return "liquidPage";
     }

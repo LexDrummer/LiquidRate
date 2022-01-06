@@ -34,4 +34,12 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         manufacturerRepository.findAll().forEach(manufacturers::add);
         return manufacturers;
     }
+
+    public Manufacturer findById(Long id){
+        return manufacturerRepository.findManufacturerById(id);
+    }
+
+    public Set<Manufacturer> findByCountry(String country){
+        return manufacturerRepository.findAllByCountry(country.toLowerCase());
+    }
 }

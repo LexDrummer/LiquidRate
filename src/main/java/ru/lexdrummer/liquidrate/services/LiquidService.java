@@ -16,4 +16,6 @@ public interface LiquidService {
 
     Liquid findById(Long id);
 
+    void deleteLiquid(Long id);
+
 }

@@ -34,4 +34,16 @@ public class CommentSectionServiceImpl implements CommentSectionService {
         double rate = (rates.stream().mapToDouble(i -> i).sum()) / rates.size();
         return rate;
     }
+
+    public Double findRateByLiquidId(Long id) {
+        List<Double> rates = new ArrayList<>();
+        commentSectionRepository.findAllByLiquidId(id).forEach(i -> rates.add(i.getRate()));
+        double rate = (rates.stream().mapToDouble(i -> i).sum()) / rates.size();
+        return rate;
+    }
+
+    public void deleteAllByLiquidId(Long id){
+        commentSectionRepository.findAllByLiquidId(id).stream().forEach(commentSection ->
+                commentSectionRepository.deleteById(commentSection.getId()));
+    }
 }

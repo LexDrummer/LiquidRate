@@ -10,4 +10,8 @@ public interface CommentSectionService {
 
     Set<CommentSection> findAllByLiquidId(Long id);
 
+    void deleteAllByLiquidId(Long id);
+
+    Double findRateByLiquidId(Long id);
+
 }

@@ -6,6 +6,9 @@ import ru.lexdrummer.liquidrate.services.LiquidService;
 @Controller
 public class LiquidCrudController {
 
-    private LiquidService liquidService;
+    private final LiquidService liquidService;
 
+    public LiquidCrudController(LiquidService liquidService) {
+        this.liquidService = liquidService;
+    }
 }
