@@ -9,4 +9,6 @@ public interface CommentSectionRepository extends CrudRepository<CommentSection,
 
     Set<CommentSection> findAllByLiquidName(String name);
 
+    Set<CommentSection> findAllByLiquidId(Long id);
+
 }

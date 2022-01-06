@@ -4,16 +4,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import ru.lexdrummer.liquidrate.model.*;
 import ru.lexdrummer.liquidrate.repositories.CommentSectionRepository;
 import ru.lexdrummer.liquidrate.repositories.LiquidRepository;
 import ru.lexdrummer.liquidrate.repositories.ManufacturerRepository;
 import ru.lexdrummer.liquidrate.repositories.UserRepository;
-
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -34,7 +28,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         @Override
         @Transactional
         public void onApplicationEvent (ContextRefreshedEvent contextRefreshedEvent){
-       // /*
+        /*
         Manufacturer maxwells = new Manufacturer();
             maxwells.setCountry("Russia");
             maxwells.setName("Maxwells");
@@ -65,7 +59,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             commentSectionRepository.save(alexComment);
             commentSectionRepository.save(alexComment1);
 
-            //*/
+            */
 
         }
     }

@@ -7,4 +7,7 @@ import java.util.Set;
 public interface CommentSectionService {
 
     Set<CommentSection> findAllByLiquidName(String name);
+
+    Set<CommentSection> findAllByLiquidId(Long id);
+
 }

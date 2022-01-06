@@ -6,4 +6,8 @@ import ru.lexdrummer.liquidrate.model.Liquid;
 public interface LiquidRepository extends CrudRepository<Liquid, Long> {
 
     Liquid findByName(String name);
+
+   Liquid findLiquidById(Long id);
+
+
 }

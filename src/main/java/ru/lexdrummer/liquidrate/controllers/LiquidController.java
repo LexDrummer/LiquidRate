@@ -20,10 +20,10 @@ public class LiquidController {
         this.commentSectionService = commentSectionService;
     }
 
-    @GetMapping("/liquids/{liquidId}")
-    public String liquidPage(@RequestParam(value = "liquidName") String liquidName, Model model){
-        model.addAttribute("liquid", liquidService.findByName(liquidName));
-        model.addAttribute("comments", commentSectionService.findAllByLiquidName(liquidName));
+    @GetMapping("/liquids/{id}")
+    public String liquidPage(Model model, @PathVariable("id") Long id){
+        model.addAttribute("liquid", liquidService.findById(id));
+        model.addAttribute("comments", commentSectionService.findAllByLiquidId(id));
 
         return "liquidPage";
     }

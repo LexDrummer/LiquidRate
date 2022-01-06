@@ -24,6 +24,10 @@ public class CommentSectionServiceImpl implements CommentSectionService {
         return commentSectionRepository.findAllByLiquidName(name);
     }
 
+    public Set<CommentSection> findAllByLiquidId(Long id){
+        return commentSectionRepository.findAllByLiquidId(id);
+    }
+
     public Double findRateByLiquidName(String name) {
         List<Double> rates = new ArrayList<>();
         commentSectionRepository.findAllByLiquidName(name).forEach(i -> rates.add(i.getRate()));

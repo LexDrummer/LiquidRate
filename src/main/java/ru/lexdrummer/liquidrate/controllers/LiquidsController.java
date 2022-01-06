@@ -20,8 +20,7 @@ public class LiquidsController {
 
     @RequestMapping({"/liquids", "/liquids.html"})
     public String liquids(Model model){
-
-        model.addAttribute("liquids", liquidService.findAllByManufacturersName("Maxwells"));
+        model.addAttribute("liquids", liquidService.findAll());
         return "liquids";
     }
 

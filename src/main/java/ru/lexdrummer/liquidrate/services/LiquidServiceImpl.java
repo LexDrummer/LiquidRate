@@ -41,4 +41,14 @@ public class LiquidServiceImpl implements LiquidService {
         return liquidRepository.findByName(name);
     }
 
+    public Liquid findById(Long id) {
+        return liquidRepository.findLiquidById(id);
+    }
+
+    public Set<Liquid> findAll(){
+        Set<Liquid> liquids = new HashSet<>();
+        liquidRepository.findAll().forEach(liquids::add);
+        return liquids;
+    }
+
 }

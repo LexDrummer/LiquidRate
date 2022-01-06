@@ -6,6 +6,7 @@ import ru.lexdrummer.liquidrate.model.Liquid;
 import ru.lexdrummer.liquidrate.model.Manufacturer;
 import ru.lexdrummer.liquidrate.repositories.ManufacturerRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
@@ -26,5 +27,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     @Override
     public Set<Liquid> findProducts() {
         return null;
+    }
+
+    public Set<Manufacturer> findAll(){
+        Set<Manufacturer> manufacturers = new HashSet<>();
+        manufacturerRepository.findAll().forEach(manufacturers::add);
+        return manufacturers;
     }
 }
